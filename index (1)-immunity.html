@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Interactive Biology practice on the immune system: defence, lymphocytes, immune memory and immunoglobulins.">
+<title>The Immune System | Interactive Biology Practice</title>
+<style>
+:root{--ink:#183b36;--muted:#55716c;--teal:#087f78;--teal2:#dff5f1;--lime:#f0f9c7;--coral:#ff896e;--yellow:#ffe38d;--paper:#fffdf7;--line:#d9e9e3;--good:#167341;--bad:#b34348;--shadow:0 12px 32px #17483b12}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(145deg,#f2fbf8 0,#fffaf0 48%,#f4f7ff 100%);color:var(--ink);font:16px/1.58 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{padding:clamp(28px,6vw,68px) 20px 34px;background:radial-gradient(ellipse at 18% 15%,#c9f5e8 0,transparent 42%),radial-gradient(ellipse at 85% 10%,#ffe8aa 0,transparent 34%)}.hero{max-width:1000px;margin:auto}.eyebrow{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:99px;padding:5px 12px;color:var(--teal);font-size:.82rem;font-weight:750;letter-spacing:.04em}.hero h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.04;letter-spacing:-.04em;margin:18px 0 12px;max-width:760px}.hero p{max-width:700px;color:#42635c;font-size:1.05rem;margin:0}.hero-badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}.badge{padding:7px 12px;border-radius:12px;background:#fff8;color:#335f56;font-size:.88rem;font-weight:650;border:1px solid #d9e9e388}
+main{max-width:1000px;padding:12px 18px 60px;margin:auto}.toolbar{position:sticky;top:8px;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 14px;margin:8px 0 22px;background:#ffffffeb;backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.toolbar .buttons{display:flex;gap:8px;flex-wrap:wrap}.button{appearance:none;border:0;border-radius:12px;padding:10px 16px;font:700 .95rem system-ui;cursor:pointer;transition:transform .15s,box-shadow .15s}.button:hover{transform:translateY(-1px);box-shadow:0 5px 14px #173c3522}.button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #ff9b78;outline-offset:2px}.primary{background:var(--teal);color:white}.secondary{background:var(--teal2);color:var(--ink)}.reset{background:#fff0dc;color:#794c1c}.score{font-weight:800;font-size:1.05rem;color:var(--teal);min-width:130px}.progress{height:8px;border-radius:99px;background:#e5efeb;overflow:hidden;flex:1;min-width:100px}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#42c99f,#f3c944);transition:width .25s}
+.section{background:#fff;border:1px solid var(--line);border-radius:22px;padding:clamp(17px,3vw,28px);margin:20px 0;box-shadow:var(--shadow)}.section-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px}.section-num{flex:0 0 42px;height:42px;border-radius:14px;display:grid;place-items:center;font-weight:850;background:var(--yellow);color:#51451b}.section:nth-of-type(3n+1) .section-num{background:#d9efff;color:#285274}.section:nth-of-type(3n+2) .section-num{background:#e7f5bd;color:#4b6418}.section h2{margin:0;font-size:1.3rem;line-height:1.25}.section-head p{margin:4px 0 0;color:var(--muted);font-size:.93rem}.question{padding:16px 0;border-top:1px solid #edf2ef}.question:first-child{border-top:0}.qtext{font-weight:700;margin:0 0 10px}.qnum{color:var(--teal);font-weight:850;margin-right:7px}.choices{display:grid;gap:8px}.choice{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border:1px solid #e2ece7;border-radius:12px;background:#fcfefc;cursor:pointer}.choice:hover{border-color:#91d4c3;background:#f3fcf8}.choice input{margin-top:5px;accent-color:var(--teal)}.select-answer,.text-answer{width:100%;max-width:600px;border:1px solid #cbded6;border-radius:11px;background:#fbfefc;color:var(--ink);padding:10px 12px;font:inherit}.feedback{display:none;margin-top:9px;padding:9px 12px;border-radius:11px;font-size:.93rem}.feedback.show{display:block}.feedback.correct{background:#e3f7eb;color:var(--good)}.feedback.incorrect{background:#fff0ed;color:var(--bad)}.mark-correct{border-color:#66bd83!important;background:#f1fff4!important}.mark-incorrect{border-color:#e78c82!important;background:#fff5f3!important}.result{display:none;padding:18px;border-radius:16px;margin:12px 0 20px;background:#e4f7f1;border:1px solid #b9e5d7;font-weight:700}.result.show{display:block}.result.low{background:#fff1e8;border-color:#f4c9a8}.result strong{font-size:1.35rem}.answer-key{display:none;background:#fff8dd;border:1px solid #f1dfa0;border-radius:16px;padding:18px;margin:12px 0}.answer-key.show{display:block}.answer-key h2{margin:0 0 8px;font-size:1.15rem}.answer-key ol{margin:0;padding-left:23px}.answer-key li{margin:5px 0}.note{padding:12px 14px;border-radius:12px;background:#f5f8ff;color:#465b7a;font-size:.9rem}
+footer{text-align:center;padding:28px 18px;color:#637a74;font-size:.88rem}.hidden{display:none!important}
+@media(max-width:620px){body{font-size:15px}.toolbar{position:static}.toolbar .buttons{width:100%}.toolbar .button{flex:1}.score{min-width:95px}.section{border-radius:17px}.hero h1{max-width:500px}.progress{order:3;flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="hero">
+<span class="eyebrow">BIOLOGY · INTERACTIVE PRACTICE</span>
+<h1>The Immune System</h1>
+<p>Practise how the body defends itself, how lymphocytes respond to antigens, and how immune memory and immunoglobulins work.</p>
+<div class="hero-badges"><span class="badge">Self-checking tasks</span><span class="badge">Instant feedback</span><span class="badge">Suitable for mobile</span></div>
+</div></header>
+<main>
+<div class="toolbar" aria-label="Task controls">
+<div class="score" id="score" aria-live="polite">Not checked yet</div><div class="progress" aria-label="Score progress"><span id="progressbar"></span></div>
+<div class="buttons"><button class="button primary" id="checkBtn">Check answers</button><button class="button secondary" id="keyBtn" aria-expanded="false">Show answer key</button><button class="button reset" id="resetBtn">Start again</button></div>
+</div>
+<div id="result" class="result" role="status" aria-live="polite"></div>
+<div id="answerKey" class="answer-key"><h2>Answer key</h2><ol id="keyList"></ol></div>
+<div class="note"><strong>How to use this page:</strong> Complete the tasks, then select <em>Check answers</em>. Your score is based on the questions answered correctly. You can check again after making changes.</div>
+<div id="tasks"></div>
+</main>
+<footer>Biology practice · The Immune System</footer>
+<script>
+'use strict';
+const sections=[
+ {title:'Choose the best answer',intro:'Select one answer for each question.',type:'mc',items:[
+  {q:'What is an antigen?',opts:['A substance that triggers a defensive immune reaction','A white blood cell that engulfs bacteria','A fluid that flows through lymphatic vessels'],a:0,why:'Antigens are substances that trigger a defensive reaction.'},
+  {q:'Which structures form the first line of defence against microorganisms?',opts:['The skin and mucous membranes','Lymph nodes and the spleen','T lymphocytes and B lymphocytes'],a:0,why:'The skin and mucous membranes form the first line of defence.'},
+  {q:'Where do white blood cells originate?',opts:['In the red bone marrow','In the lymphatic vessels','In the blood plasma'],a:0,why:'White blood cells originate from cells in the red bone marrow.'},
+  {q:'What happens to lymph as it flows towards the bloodstream?',opts:['It is filtered through lymph nodes','It is converted into antibodies','It passes directly into the thymus'],a:0,why:'Lymph passes through several lymph nodes, where it is filtered, before returning to the bloodstream.'},
+  {q:'Which cells are especially involved in destroying pathogens during the non-specific response?',opts:['Granulocytes','Memory cells','B lymphocytes'],a:0,why:'Granulocytes are particularly involved in destroying pathogens.'},
+  {q:'Where do T lymphocytes mature?',opts:['In the thymus','In the red bone marrow','In the lymph nodes'],a:0,why:'T lymphocytes mature in the thymus.'},
+  {q:'Which cells directly destroy antigen-bearing cells in the cell-mediated immune response?',opts:['Activated cytotoxic T cells','Antibody-secreting cells','Neutrophil granulocytes'],a:0,why:'Activated cytotoxic T cells perforate and destroy target cells carrying the antigen.'},
+  {q:'How do antibodies reach the tissue fluid and blood plasma?',opts:['They are released by exocytosis','They pass through the skin','They are carried inside red blood cells'],a:0,why:'Antibodies are released by exocytosis into the tissue fluid and blood plasma.'},
+  {q:'What is the main role of memory cells during a later infection with the same pathogen?',opts:['They enable a faster immune response','They prevent all white blood cells from dividing','They form the first line of defence'],a:0,why:'Memory cells recognise the antigen quickly and help activate a faster response.'},
+  {q:'Which statement about IgA is correct?',opts:['It helps prevent microorganisms from crossing mucous membranes','It is the first immunoglobulin to rise during an infection','It crosses the placenta and activates macrophages'],a:0,why:'IgA mainly helps prevent microorganisms from passing through mucous membranes.'},
+  {q:'Who first used vaccination against smallpox?',opts:['Edward Jenner','Louis Pasteur','Alexander Fleming'],a:0,why:'Edward Jenner used cowpox material to provide protection against smallpox.'},
+  {q:'What is the first stage of the three-stage specific immune response?',opts:['Recognition of the antigen','Antibody release','Removal of antigen–antibody complexes'],a:0,why:'The stages are antigen recognition, immune-system activation and antigen neutralisation.'},
+  {q:'In the testing process described, what happens before clinical trials?',opts:['The substance is tested in the laboratory on at least two animal species','It is approved for general use','It is tested only on patients'],a:0,why:'Laboratory testing on at least two animal species precedes the clinical-trial phases.'},
+  {q:'Which sequence describes the clinical testing stages in the material?',opts:['Healthy volunteers, then patients, then limited clinical use','Patients, then healthy volunteers, then animal testing','Limited clinical use, then laboratory testing, then healthy volunteers'],a:0,why:'The sequence begins with healthy volunteers, continues with patients and then limited clinical use.'},
+  {q:'What consequence is associated with Contergan use during pregnancy?',opts:['Limb deformities in foetuses','Loss of hearing in adults','Temporary inflammation around wounds'],a:0,why:'The medicine was associated with limb deformities in foetuses.'}
+ ]},
+ {title:'True or false?',intro:'Choose True or False for each statement.',type:'tf',items:[
+  {q:'Closely packed epithelial cells help prevent pathogens from entering deeper tissues.',a:true,why:'This is one way the skin and mucous membranes protect the body.'},
+  {q:'Lymphatic vessels drain into lymph nodes.',a:true,why:'Lymphatic vessels drain into lymph nodes, which filter the lymph.'},
+  {q:'B lymphocytes mature in the thymus.',a:false,why:'T lymphocytes mature in the thymus; B lymphocytes mature in lymph nodes.'},
+  {q:'Inflammation can develop when capillary permeability increases around a wound.',a:true,why:'Increased permeability allows phagocytes and more fluid to enter the infected area.'},
+  {q:'Every lymphocyte can recognise many different types of antigen.',a:false,why:'Each committed lymphocyte recognises one type of antigen.'},
+  {q:'Some activated T cells and B cells become long-lived memory cells.',a:true,why:'Memory cells can persist and respond rapidly during a later infection.'},
+  {q:'IgG molecules can cross the placenta.',a:true,why:'IgG can cross the placenta and enter the embryo.'},
+  {q:'IgM is usually the first immunoglobulin group to increase during an infection.',a:true,why:'The concentration of IgM usually rises first.'},
+  {q:'When an antigen binds to neighbouring IgE molecules, histamine may be released.',a:true,why:'The described IgE response can release histamine and other substances.'},
+  {q:'Vaccination produces natural immunity by introducing a live disease into the body.',a:false,why:'Vaccination produces artificial immunity; active immunisation uses dead or weakened pathogens.'},
+  {q:'The clinical testing process described includes testing a potential medicine on healthy volunteers and then on patients.',a:true,why:'These are the first two human testing stages described.'},
+  {q:'The note describes the average time from announcing a promising substance to approval as about ten years.',a:true,why:'The described process takes about ten years on average.'}
+ ]},
+ {title:'Match each term to its function or description',intro:'Choose the best match from each drop-down menu. The options appear in a shuffled order.',type:'match',items:[
+  {q:'Antigen',a:'Triggers an immune defensive reaction'},
+  {q:'Phagocyte',a:'Engulfs and breaks down bacteria or damaged cells'},
+  {q:'Lymph node',a:'Filters lymph'},
+  {q:'Helper T cell',a:'Helps activate other lymphocytes'},
+  {q:'Cytotoxic T cell',a:'Destroys an antigen-bearing target cell'},
+  {q:'Memory cell',a:'Enables a faster response during a later infection'},
+  {q:'IgG',a:'Can cross the placenta'},
+  {q:'IgE',a:'Can trigger histamine release'},
+  {q:'IgA',a:'Helps protect mucous membranes'},
+  {q:'IgM',a:'Usually rises first during an infection'}
+ ],options:['Triggers an immune defensive reaction','Engulfs and breaks down bacteria or damaged cells','Filters lymph','Helps activate other lymphocytes','Destroys an antigen-bearing target cell','Enables a faster response during a later infection','Can cross the placenta','Can trigger histamine release','Helps protect mucous membranes','Usually rises first during an infection','Forms the skin barrier','Carries oxygen in the blood']},
+ {title:'Complete the sentences',intro:'Type the missing word or short phrase. Capitalisation and punctuation do not matter.',type:'fill',items:[
+  {q:'The ability to maintain a stable internal environment is called <strong>_____</strong>.',answers:['homeostasis'],why:'Homeostasis is the stability of the internal environment.'},
+  {q:'The first line of defence includes the skin and <strong>_____</strong>.',answers:['mucous membranes','mucosa'],why:'Mucous membranes line internal surfaces that contact the external environment.'},
+  {q:'White blood cells pass through the walls of <strong>_____</strong>.',answers:['capillaries','capillary walls'],why:'White blood cells can pass through capillary walls.'},
+  {q:'The reddish swelling around a wound is a sign of <strong>_____</strong>.',answers:['inflammation'],why:'Inflammation develops around the infected area.'},
+  {q:'Granulocytes and monocytes can become active <strong>_____</strong>.',answers:['phagocytes'],why:'These cells engulf and digest bacteria and damaged tissue cells.'},
+  {q:'T lymphocytes mature in the <strong>_____</strong>.',answers:['thymus'],why:'The thymus is the maturation site of T lymphocytes.'},
+  {q:'The proteins that bind to a particular antigen are called <strong>_____</strong>.',answers:['antibodies','immunoglobulins'],why:'Antibodies, also called immunoglobulins, bind to particular antigens.'},
+  {q:'IgA occurs in breast milk, saliva and <strong>_____</strong>.',answers:['tears'],why:'IgA is present in breast milk, saliva and tears.'},
+  {q:'Edward Jenner used material from <strong>_____</strong> lesions to protect against smallpox.',answers:['cowpox'],why:'Jenner discovered that material from cowpox lesions provided protection against smallpox.'},
+  {q:'Louis Pasteur’s name is associated with the food-preservation process called <strong>_____</strong>.',answers:['pasteurisation','pasteurization'],why:'Pasteurisation is named after Louis Pasteur.'},
+  {q:'The clinical testing process described begins with healthy <strong>_____</strong>.',answers:['volunteers','healthy volunteers'],why:'The first clinical stage tests the potential medicine or vaccine on healthy volunteers.'},
+  {q:'Contergan use during pregnancy was associated with <strong>_____</strong> deformities in foetuses.',answers:['limb'],why:'The medicine was associated with limb deformities in foetuses.'}
+ ]},
+ {title:'Put the events in order',intro:'Choose the correct position for each event in the sequence.',type:'order',items:[
+  {q:'Arrange the stages of the specific immune response.',steps:['Recognition of the antigen','Activation of the immune system','Neutralisation of the antigen'],why:'The sequence is recognition, activation and neutralisation.'},
+  {q:'Arrange the path followed by lymph before it returns to the bloodstream.',steps:['Tissue fluid enters lymphatic capillaries','Lymph flows through lymphatic vessels','Lymph passes through lymph nodes','Lymph returns to the bloodstream'],why:'Lymph enters lymphatic capillaries, travels through lymphatic vessels, is filtered in lymph nodes and returns to the bloodstream.'},
+  {q:'Arrange the main events in active immunisation.',steps:['Dead or weakened pathogens are introduced','An immune response develops against their antigens','Memory cells form','Memory cells respond rapidly during a later infection'],why:'Active immunisation exposes the immune system to antigens and produces memory cells that respond rapidly later.'}
+ ]},
+ {title:'Short answers',intro:'Enter a biological term or a short name. Equivalent accepted forms are included.',type:'short',items:[
+  {q:'What is the name of the cell organelle that helps break down engulfed bacteria?',answers:['lysosome','lysosomes'],why:'Phagocytes use lysosomes to break down engulfed material.'},
+  {q:'What is the name of the insoluble complex formed when an antibody binds its antigen?',answers:['antigen-antibody complex','antigen antibody complex','antigen–antibody complex'],why:'An antibody and its antigen form an antigen–antibody complex.'},
+  {q:'Which physician is associated with the first smallpox vaccination?',answers:['edward jenner','jenner'],why:'Edward Jenner first used vaccination against smallpox.'},
+  {q:'Which scientist’s work helped establish microbiology and is associated with pasteurisation?',answers:['louis pasteur','pasteur'],why:'Louis Pasteur studied bacterial fermentation and developed vaccines against several infectious diseases.'},
+  {q:'Which immunoglobulin group is associated with blood-group antibodies?',answers:['igm'],why:'Blood-group antibodies are described as IgM.'},
+  {q:'Which immunoglobulin group mainly prevents microorganisms from crossing mucous membranes?',answers:['iga'],why:'IgA mainly helps prevent microorganisms from passing through mucous membranes.'}
+ ]}
+];
+const tasks=document.getElementById('tasks');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shuffle=a=>{const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b};
+let flat=[];let idCounter=0;
+sections.forEach((section,si)=>{
+ const sec=document.createElement('section');sec.className='section';sec.innerHTML=`<div class="section-head"><div class="section-num">${String(si+1).padStart(2,'0')}</div><div><h2>${esc(section.title)}</h2><p>${esc(section.intro)}</p></div></div><div class="items"></div>`;
+ const box=sec.querySelector('.items');
+ section.items.forEach((item,ii)=>{
+  const id='q'+(++idCounter);const article=document.createElement('article');article.className='question';article.dataset.id=id;article.dataset.type=section.type;
+  let content='';
+  if(section.type==='mc') content=`<div class="choices">${shuffle(item.opts.map((o,k)=>({o,k}))).map(({o,k})=>`<label class="choice"><input type="radio" name="${id}" value="${k}"><span>${esc(o)}</span></label>`).join('')}</div>`;
+  if(section.type==='tf') content=`<div class="choices"><label class="choice"><input type="radio" name="${id}" value="true"><span>True</span></label><label class="choice"><input type="radio" name="${id}" value="false"><span>False</span></label></div>`;
+  if(section.type==='match') content=`<select class="select-answer" aria-label="Answer for ${esc(item.q)}"><option value="">Choose an answer…</option>${shuffle(section.options).map(o=>`<option value="${esc(o)}">${esc(o)}</option>`).join('')}</select>`;
+  if(section.type==='fill'||section.type==='short') content=`<input class="text-answer" type="text" autocomplete="off" aria-label="Answer for ${esc(item.q)}" placeholder="Type your answer">`;
+  if(section.type==='order') content=`<div class="choices orderchoices">${item.steps.map((step,k)=>`<label class="choice"><span><strong>Position ${k+1}:</strong> <select class="select-answer" data-position="${k}" aria-label="Choose event for position ${k+1}"><option value="">Choose an event…</option>${shuffle(item.steps).map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('')}</select></span></label>`).join('')}</div>`;
+  article.innerHTML=`<p class="qtext"><span class="qnum">${flat.length+1}.</span>${item.q}</p>${content}<div class="feedback" aria-live="polite"></div>`;
+  box.appendChild(article);flat.push({id,section,item});
+ });
+ tasks.appendChild(sec);
+});
+function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[–—]/g,'-').replace(/[.,;:!?]/g,'').replace(/\s+/g,' ').trim()}
+function getAnswer(entry){const el=document.querySelector(`[data-id="${entry.id}"]`);const t=entry.section.type;
+ if(t==='mc'||t==='tf'){const x=el.querySelector('input:checked');return x?x.value:null}
+ if(t==='match')return el.querySelector('select').value||null;
+ if(t==='fill'||t==='short')return el.querySelector('input').value.trim()||null;
+ if(t==='order')return [...el.querySelectorAll('select')].map(s=>s.value||null);
+}
+function expected(entry){const {section,item}=entry;switch(section.type){case'mc':return item.opts[item.a];case'tf':return item.a?'True':'False';case'match':return item.a;case'fill':case'short':return item.answers[0];case'order':return item.steps.join(' → ');}}
+function answerIsCorrect(entry,ans){if(ans===null)return false;const {section,item}=entry;switch(section.type){case'mc':return Number(ans)===item.a;case'tf':return ans===String(item.a);case'match':return norm(ans)===norm(item.a);case'fill':case'short':return item.answers.some(a=>norm(a)===norm(ans));case'order':return ans.length===item.steps.length&&ans.every((x,i)=>norm(x)===norm(item.steps[i]));}}
+function renderKey(){const list=document.getElementById('keyList');list.innerHTML='';flat.forEach((e,i)=>{const li=document.createElement('li');li.innerHTML=`<strong>${i+1}.</strong> ${esc(expected(e))}`;list.appendChild(li)})}
+renderKey();
+document.getElementById('checkBtn').addEventListener('click',()=>{
+ let correct=0;flat.forEach(entry=>{const el=document.querySelector(`[data-id="${entry.id}"]`),ans=getAnswer(entry),ok=answerIsCorrect(entry,ans),fb=el.querySelector('.feedback');if(ok)correct++;el.classList.toggle('mark-correct',ok);el.classList.toggle('mark-incorrect',!ok);fb.className='feedback show '+(ok?'correct':'incorrect');fb.innerHTML=ok?`Correct. ${esc(entry.item.why||'')}`:`${ans===null?'No answer selected.':'Not quite.'} <strong>Correct answer:</strong> ${esc(expected(entry))}. ${esc(entry.item.why||'')}`;
+ });
+ const pct=Math.round(correct/flat.length*100);const score=document.getElementById('score');score.textContent=`${correct} / ${flat.length} · ${pct}%`;document.getElementById('progressbar').style.width=pct+'%';const result=document.getElementById('result');result.className='result show'+(pct<60?' low':'');result.innerHTML=`You scored <strong>${correct} out of ${flat.length}</strong> (${pct}%). ${pct>=85?'Excellent work!':pct>=60?'Good work. Review the items you missed and try again.':'Review the feedback, then have another go.'}`;
+});
+document.getElementById('keyBtn').addEventListener('click',e=>{const key=document.getElementById('answerKey'),on=key.classList.toggle('show');e.currentTarget.setAttribute('aria-expanded',String(on));e.currentTarget.textContent=on?'Hide answer key':'Show answer key'});
+document.getElementById('resetBtn').addEventListener('click',()=>{document.querySelectorAll('input').forEach(x=>{if(x.type==='radio')x.checked=false;else x.value=''});document.querySelectorAll('select').forEach(x=>x.selectedIndex=0);document.querySelectorAll('.question').forEach(x=>{x.classList.remove('mark-correct','mark-incorrect');const f=x.querySelector('.feedback');f.className='feedback';f.textContent=''});document.getElementById('score').textContent='Not checked yet';document.getElementById('progressbar').style.width='0';document.getElementById('result').className='result';document.getElementById('result').textContent='';document.getElementById('answerKey').classList.remove('show');document.getElementById('keyBtn').setAttribute('aria-expanded','false');document.getElementById('keyBtn').textContent='Show answer key';window.scrollTo({top:0,behavior:'smooth'})});
+</script>
+</body>
+</html>
